@@ -511,3 +511,5 @@ g_efectivo <- ggplot(df_efectivo, aes(
 g_efectivo
 
 table(df_efectivo$margen_error_efectivo)
+
+table(as_label(df_long$cons_emp),df_long$candidat)
