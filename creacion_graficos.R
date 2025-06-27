@@ -68,20 +68,42 @@ g_jun<-df_long %>%
 g_jun
 
 
+#La mejorsísima hasta el momento
 g1<-ggplot(df_long, aes(
   x = mes_ano,
   y = intencion,
   color = candidat,
   shape = as_label(medio)
-)) +
+))+
+  # Primero: Líneas SOLO para los promedios (conexión entre meses)
+  geom_line(
+    data = df_long %>% filter(medio == length(nuevas_etiquetas)),  # Solo promedios
+    aes(group = candidat),
+    linetype = "solid",
+    linewidth = 0.8,
+    alpha = 0.6,
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    }
+  ) +
   geom_errorbar(
     aes(ymin = lower_ci, ymax = upper_ci),
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     width = 0.25,
     alpha = 0.5
   ) +
   geom_point(
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     size = 5,
     alpha = 0.9
   ) +
@@ -102,12 +124,12 @@ g1<-ggplot(df_long, aes(
     y = "Intención de voto (%)",
     color = "Candidatura",
     shape = "Medio de difusión",
-    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE, 
-    intervalos de confianza calculados con el margen de error que publica la encuestadora"
-  ) +
+    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE y 'súper encuesta'
+    de Marcelo Claure, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
+  )  +
   theme(
     plot.caption = element_text(
-      hjust = 1,      # Alineación izquierda
+      hjust = 0,      # Alineación izquierda
       size = 9,       # Tamaño de fuente
       face = "italic", # Estilo de letra
       color = "gray40", # Color del texto
@@ -124,6 +146,7 @@ g1<-ggplot(df_long, aes(
     axis.text.x = element_text(hjust = .5)
   )
 g1
+
 
 ####Votos efectivos----
 g_jun_efc<-df_efectivo %>%
@@ -160,14 +183,34 @@ g_efectivo <- ggplot(df_efectivo, aes(
   color = candidat,
   shape = as_label(medio)
 )) +
+  geom_line(
+    data = df_efectivo %>% filter(medio == length(nuevas_etiquetas)),  # Solo promedios
+    aes(group = candidat),
+    linetype = "solid",
+    linewidth = 0.8,
+    alpha = 0.6,
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    }
+  ) +
   geom_errorbar(
     aes(ymin = lower_ci, ymax = upper_ci),
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     width = 0.25,
     alpha = 0.5
   ) +
   geom_point(
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     size = 5,
     alpha = 0.9
   ) +
@@ -188,8 +231,8 @@ g_efectivo <- ggplot(df_efectivo, aes(
     y = "Porcentaje de votos válidos (%)",
     color = "Candidatura",
     shape = "Medio de difusión",
-    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE,
-    intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
+    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE y 'súper encuesta'
+    de Marcelo Claure, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
   ) +
   theme(
     plot.caption = element_text(

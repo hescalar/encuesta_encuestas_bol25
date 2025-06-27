@@ -85,10 +85,6 @@ etiquetar_df_base <- function(df, dictionary) {
 
 df<- etiquetar_df_base(df, dictionary)
 
-sjlabelled::get_label(df_etiquetado$cons_emp)
-
-sjlabelled::get_labels(df_etiquetado$cons_emp)  
-
 str(df$fecha_pub)
 
 df <- df |>
@@ -128,25 +124,29 @@ etiquetas_actuales <- attr(df_long$medio, "labels")
 etiquetas_actuales <- setNames(as.numeric(etiquetas_actuales), names(etiquetas_actuales))
 
 etiquetas_actuales
-# Agregar el nuevo nivel "Promedio" con valor 21
-nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = 21)
+# Agregar el nuevo nivel "Promedio" con valor (número de etiquetas + 1)
+
+
+nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = (length(etiquetas_actuales)+1))
 
 # Reasignar etiquetas a la variable 'medio'
 df_long$medio <- set_labels(df_long$medio, labels = nuevas_etiquetas)
 
 get_labels(df_long$medio)
 
+table(df_long$mes_ano)
+
+
 #Calcular promedios mensuales
-promedios <- df_long %>%
+promedios<- df_long %>%
   group_by(mes_ano, candidat) %>%
   summarise(
     intencion = mean(intencion, na.rm = TRUE),
     margen_error = mean(margen_error, na.rm = TRUE),
     .groups = "drop"
   )|>
-  mutate(medio = 21)# El valor 21 tiene la etiqueta "Promedio"
+  mutate(medio = length(nuevas_etiquetas))# La cuenta de las nuevas_etiquetas ahora corresponde a la etiqueta "Promedio"
 promedios
-
 # Unir los promedios al df_long original
 df_long <- bind_rows(df_long, promedios)
 df_long
@@ -181,13 +181,13 @@ df_long <- df_long %>%
 
 colores_13 <- c(
   "#3dac34",  # ADR
-  "#fbc51a",  # JD
+  "#65dfe8",  # JD
   "#01a8ec",  # JF
   "#aa1622",  # AS
   "#541a67",  # MRV
-  "#089836",  # TUTO
+  "#ff6364",  # TUTO
   "#a6761d",  # EVA
-  "#ec452e",  # RPAZ
+  "brown",  # RPAZ
   "#002696",  # EDU
   "#ffc603",  # KENCHA
   "gray",  # BLANCO
@@ -220,7 +220,7 @@ g_2<-df_long %>%
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
+g_2
 g_jun<-df_long %>%
   filter(lubridate::month(mes_ano) == 6) %>%
   ggplot(aes(
@@ -278,15 +278,36 @@ g1<-ggplot(df_long, aes(
   y = intencion,
   color = candidat,
   shape = as_label(medio)
-)) +
+))+
+  # Primero: Líneas SOLO para los promedios (conexión entre meses)
+  geom_line(
+    data = df_long %>% filter(medio == length(nuevas_etiquetas)),  # Solo promedios
+    aes(group = candidat),
+    linetype = "solid",
+    linewidth = 0.8,
+    alpha = 0.6,
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    }
+  ) +
   geom_errorbar(
     aes(ymin = lower_ci, ymax = upper_ci),
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     width = 0.25,
     alpha = 0.5
   ) +
   geom_point(
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     size = 5,
     alpha = 0.9
   ) +
@@ -307,8 +328,9 @@ g1<-ggplot(df_long, aes(
     y = "Intención de voto (%)",
     color = "Candidatura",
     shape = "Medio de difusión",
-    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE, intervalos de confianza calculados con el margen de error que publica la encuestadora"
-  ) +
+    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE y 'súper encuesta'
+    de Marcelo Claure, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
+  )  +
   theme(
     plot.caption = element_text(
       hjust = 0,      # Alineación izquierda
@@ -347,7 +369,7 @@ df_efectivo <- df %>%
   # Calcular el total válido por encuesta
   group_by(id) %>%
   mutate(
-    total_valido = sum(intencion_cruda),
+    total_valido = sum(intencion_cruda, na.rm = TRUE),
     intencion = intencion_cruda / total_valido,  # Reescalar a 100% válido
     margen_error_efectivo = margen_error / total_valido  # Ajustar margen de error
   ) %>%
@@ -361,7 +383,7 @@ df_efectivo <- df %>%
 # 3. Verificación (debería sumar 1 en cada encuesta)
 df_efectivo %>%
   group_by(id) %>%
-  summarise(total = sum(intencion), .groups = "drop") %>%
+  summarise(total = sum(intencion, na.rm = TRUE), .groups = "drop") %>%
   print(n = Inf)
 
 #4. Cambiar orden candidatos para que coincidan colores
@@ -382,7 +404,7 @@ levels(df_efectivo$candidat)
 # 4. Mantener EXACTAMENTE tu código de promedios (solo cambiando el input)
 etiquetas_actuales <- attr(df_efectivo$medio, "labels")
 etiquetas_actuales <- setNames(as.numeric(etiquetas_actuales), names(etiquetas_actuales))
-nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = 21)
+nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = length(etiquetas_actuales+1))
 df_efectivo$medio <- set_labels(df_efectivo$medio, labels = nuevas_etiquetas)
 
 # 5. Calcular promedios (mismo código, ahora con intención reescalada)
@@ -393,7 +415,8 @@ promedios_efectivo <- df_efectivo %>%
     margen_error_efectivo = mean(margen_error_efectivo, na.rm = TRUE),
     .groups = "drop"
   ) %>%
-  mutate(medio = 21)  # Valor etiquetado como "Promedio"
+  mutate(medio = length(nuevas_etiquetas))  # Valor etiquetado como "Promedio"
+promedios_efectivo
 
 # 6. Combinar conservando etiquetas (igual que tu versión)
 df_efectivo<- bind_rows(df_efectivo, promedios_efectivo) %>%
@@ -416,16 +439,18 @@ df_efectivo<- df_efectivo|>
 
 colores_10 <- c(
   "#3dac34",  # ADR
-  "#fbc51a",  # JD
+  "#65dfe8",  # JD
   "#01a8ec",  # JF
   "#aa1622",  # AS
   "#541a67",  # MRV
-  "#089836",  # TUTO
+  "#ff6364",  # TUTO
   "#a6761d",  # EVA
-  "#ec452e",  # RPAZ
+  "brown",  # RPAZ
   "#002696",  # EDU
-  "#ffc603"
+  "#ffc603" #KENCHA
 )
+
+
 #Gráfico junio efectivos
 g_jun_efc<-df_efectivo %>%
   filter(lubridate::month(mes_ano) == 6) %>%
@@ -445,7 +470,8 @@ g_jun_efc<-df_efectivo %>%
     x = "Candidatura",
     y = "Intención de voto (%)",
     fill = "Medio de difusión",
-    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
+    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE,
+    intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
   ) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -460,14 +486,34 @@ g_efectivo <- ggplot(df_efectivo, aes(
   color = candidat,
   shape = as_label(medio)
 )) +
+  geom_line(
+    data = df_efectivo %>% filter(medio == length(nuevas_etiquetas)),  # Solo promedios
+    aes(group = candidat),
+    linetype = "solid",
+    linewidth = 0.8,
+    alpha = 0.6,
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    }
+  ) +
   geom_errorbar(
     aes(ymin = lower_ci, ymax = upper_ci),
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     width = 0.25,
     alpha = 0.5
   ) +
   geom_point(
-    position = position_dodge(width = 7),
+    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    } else {
+      position_identity()          # Posición exacta si todos tienen 1 observación
+    },
     size = 5,
     alpha = 0.9
   ) +
@@ -488,7 +534,8 @@ g_efectivo <- ggplot(df_efectivo, aes(
     y = "Porcentaje de votos válidos (%)",
     color = "Candidatura",
     shape = "Medio de difusión",
-    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
+    caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE y 'súper encuesta'
+    de Marcelo Claure, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
   ) +
   theme(
     plot.caption = element_text(

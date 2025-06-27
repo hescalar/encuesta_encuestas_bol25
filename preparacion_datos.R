@@ -1,5 +1,5 @@
 ################################################################################
-#Preparación datos: Encuesta de encuestas
+#Encuesta de encuestas:
 #Este proyecto trabaja con datos de las principales encuestas oficiales de intención de voto
 #para las elecciones generales de Bolivia 2025
 # Autor: Esteban Calisaya
@@ -42,13 +42,14 @@ pacman::p_load(tidyverse,
 
 ####Datos----
 
-
-#######Voto total----
-
 gs4_deauth()
 
 df<-googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1Nr5mlVI1PAIXpaOtmRugJbwyriQYlAUt5Ldehq8VZ6E/edit?gid=0#gid=0")
 dictionary <-googlesheets4::read_sheet("https://docs.google.com/spreadsheets/d/1VJZkKd5dDWnHzbOO3G4o7yeW8jh1GZJIhykaApI05MQ/edit?gid=1761737635#gid=1761737635")
+
+head(df)
+head(dictionary)
+
 
 etiquetar_df_base <- function(df, dictionary) {
   
@@ -84,8 +85,17 @@ etiquetar_df_base <- function(df, dictionary) {
 
 df<- etiquetar_df_base(df, dictionary)
 
+str(df$fecha_pub)
+
 df <- df |>
   mutate(across(matches("^fecha"), ~ as.Date(as.character(.), format = "%d/%m/%Y")))
+
+str(df$fecha_pub)
+
+head(df)
+
+str(df)
+
 
 candidat <- dictionary %>%
   filter(Variable %in% names(df)) %>%
@@ -113,26 +123,36 @@ etiquetas_actuales <- attr(df_long$medio, "labels")
 # Asegurarse de que los valores son numéricos
 etiquetas_actuales <- setNames(as.numeric(etiquetas_actuales), names(etiquetas_actuales))
 
-# Agregar el nuevo nivel "Promedio" con valor 21
-nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = 21)
+etiquetas_actuales
+# Agregar el nuevo nivel "Promedio" con valor (número de etiquetas + 1)
+
+
+nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = (length(etiquetas_actuales)+1))
 
 # Reasignar etiquetas a la variable 'medio'
 df_long$medio <- set_labels(df_long$medio, labels = nuevas_etiquetas)
 
+get_labels(df_long$medio)
+
+table(df_long$mes_ano)
+
+
 #Calcular promedios mensuales
-promedios <- df_long %>%
+promedios<- df_long %>%
   group_by(mes_ano, candidat) %>%
   summarise(
     intencion = mean(intencion, na.rm = TRUE),
     margen_error = mean(margen_error, na.rm = TRUE),
     .groups = "drop"
   )|>
-  mutate(medio = 21)# El valor 21 tiene la etiqueta "Promedio"
-
+  mutate(medio = length(nuevas_etiquetas))# La cuenta de las nuevas_etiquetas ahora corresponde a la etiqueta "Promedio"
+promedios
 # Unir los promedios al df_long original
 df_long <- bind_rows(df_long, promedios)
+df_long
 
 table(df_long$medio)
+df_long$medio
 #Ya aparece el promedio
 
 df_long$medio <- set_labels(
@@ -161,21 +181,20 @@ df_long <- df_long %>%
 
 colores_13 <- c(
   "#3dac34",  # ADR
-  "#fbc51a",  # JD
+  "#65dfe8",  # JD
   "#01a8ec",  # JF
   "#aa1622",  # AS
   "#541a67",  # MRV
-  "#089836",  # TUTO
+  "#ff6364",  # TUTO
   "#a6761d",  # EVA
-  "#ec452e",  # RPAZ
+  "brown",  # RPAZ
   "#002696",  # EDU
   "#ffc603",  # KENCHA
   "gray",  # BLANCO
   "black",  # NULO
   "red"   # INDE
 )
-
-####Voto válido----
+##############Votos válidos#####################
 
 votos_validos <- c("ap", "ngp", "fp", "lyp_adn", "apb_sumate", 
                    "libre", "morena", "pdc", "mas_ipsp", "unidad")
@@ -193,7 +212,7 @@ df_efectivo <- df %>%
   # Calcular el total válido por encuesta
   group_by(id) %>%
   mutate(
-    total_valido = sum(intencion_cruda),
+    total_valido = sum(intencion_cruda, na.rm = TRUE),
     intencion = intencion_cruda / total_valido,  # Reescalar a 100% válido
     margen_error_efectivo = margen_error / total_valido  # Ajustar margen de error
   ) %>%
@@ -204,9 +223,16 @@ df_efectivo <- df %>%
     mes_ano = floor_date(fecha_pub, unit = "month")
   )
 
-#3. Cambiar orden candidatos para que coincidan colores
+# 3. Verificación (debería sumar 1 en cada encuesta)
+df_efectivo %>%
+  group_by(id) %>%
+  summarise(total = sum(intencion, na.rm = TRUE), .groups = "drop") %>%
+  print(n = Inf)
+
+#4. Cambiar orden candidatos para que coincidan colores
 orden_original <- levels(df_long$candidat) %>% 
   setdiff(c("Blancos", "Nulos", "Indecisos"))
+orden_original
 
 # 2. Aplicar este orden al dataframe de votos efectivos
 df_efectivo <- df_efectivo %>%
@@ -214,13 +240,17 @@ df_efectivo <- df_efectivo %>%
     candidat = factor(candidat, levels = orden_original)
   )
 
+levels(df_efectivo$candidat)
+
 #Promedio efectivos
 
 # 4. Mantener EXACTAMENTE tu código de promedios (solo cambiando el input)
-etiquetas_actuales <- attr(df_efectivo$medio, "labels")
-etiquetas_actuales <- setNames(as.numeric(etiquetas_actuales), names(etiquetas_actuales))
-nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = 21)
-df_efectivo$medio <- set_labels(df_efectivo$medio, labels = nuevas_etiquetas)
+etiquetas_actuales_ef <- attr(df_efectivo$medio, "labels")
+etiquetas_actuales
+etiquetas_actuales_ef
+etiquetas_actuales_ef <- setNames(as.numeric(etiquetas_actuales_ef), names(etiquetas_actuales_ef))
+nuevas_etiquetas_ef <- c(etiquetas_actuales, "Promedio" = length(etiquetas_actuales_ef))#no necesita sumarse
+df_efectivo$medio <- set_labels(df_efectivo$medio, labels = nuevas_etiquetas_ef)
 
 # 5. Calcular promedios (mismo código, ahora con intención reescalada)
 promedios_efectivo <- df_efectivo %>%
@@ -230,11 +260,17 @@ promedios_efectivo <- df_efectivo %>%
     margen_error_efectivo = mean(margen_error_efectivo, na.rm = TRUE),
     .groups = "drop"
   ) %>%
-  mutate(medio = 21)  # Valor etiquetado como "Promedio"
+  mutate(medio = length(nuevas_etiquetas_ef))  # Valor etiquetado como "Promedio"
+promedios_efectivo
 
 # 6. Combinar conservando etiquetas (igual que tu versión)
 df_efectivo<- bind_rows(df_efectivo, promedios_efectivo) %>%
   mutate(medio = set_labels(as.numeric(medio), labels = nuevas_etiquetas))
+
+
+# Verificación
+table(df_efectivo$medio)  # Debe incluir 22="Promedio"
+get_labels(df_efectivo$medio)
 
 
 df_efectivo<- df_efectivo|>
@@ -248,14 +284,16 @@ df_efectivo<- df_efectivo|>
 
 colores_10 <- c(
   "#3dac34",  # ADR
-  "#fbc51a",  # JD
+  "#65dfe8",  # JD
   "#01a8ec",  # JF
   "#aa1622",  # AS
   "#541a67",  # MRV
-  "#089836",  # TUTO
+  "#ff6364",  # TUTO
   "#a6761d",  # EVA
-  "#ec452e",  # RPAZ
+  "brown",  # RPAZ
   "#002696",  # EDU
-  "#ffc603"
+  "#ffc603" #KENCHA
 )
+
+
 
