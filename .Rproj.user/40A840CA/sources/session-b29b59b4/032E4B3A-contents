@@ -2,7 +2,7 @@
 title: "Encuesta de encuestas: Elecciones Generales Bolivia 2025"
 author: "Esteban Calisaya"
 date: "06/27/2025"
-subtitle: "Última actualización: `r format(Sys.time(), '%d de %B de %Y')`"
+# subtitle: "Última actualización: `r format(Sys.time(), '%d de %B de %Y')`"
 editor: visual
 ---
 
