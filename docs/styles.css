@@ -1,0 +1,17 @@
+/* Ajustar captions de figuras */
+.figure-caption {
+  width: 100% !important;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #555;
+}
+
+/* Ajustar contenedor principal */
+.main-container {
+  max-width: 100%;
+  padding: 20px;
+}

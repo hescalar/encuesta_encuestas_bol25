@@ -1,0 +1,27 @@
+{
+    "id": "323E4CD0",
+    "path": "~/Proyectos/elec_gen_25_bol/preparacion_datos.R",
+    "project_path": "preparacion_datos.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1751005619519.0,
+    "source_on_save": false,
+    "relative_order": 3,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "247,0",
+        "scrollLine": "224"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1751009133,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1751009133441,
+    "read_only": false,
+    "read_only_alternatives": []
+}

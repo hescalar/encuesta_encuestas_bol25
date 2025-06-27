@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: docs
+
+format:
+  html:
+    css: styles.css
+    toc: false
+    echo: false
+    warning: false
+    message: false
+    lang: es  # ¡Movido aquí!
+
+website:
+  title: "Encuesta de encuestas: Elecciones Generales Bolivia 2025"

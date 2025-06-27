@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Esteban Calisaya">
+
+<title>Encuesta de encuestas: Elecciones Generales Bolivia 2025</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Encuesta de encuestas: Elecciones Generales Bolivia 2025</h1>
+<p class="subtitle lead">Última actualización: 27 de junio de 2025</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Esteban Calisaya </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">27 de junio de 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="presentación" class="level2">
+<h2 class="anchored" data-anchor-id="presentación">Presentación</h2>
+<p>Este es un ejercicio de análisis electoral y visualización de datos inspirado en el trabajo de <a href="https://polls.politico.mx/">Político.mx</a>, la idea es recopilar en una base de datos públicas las encuestas oficiales (y tal vez las no oficiales) para compararlas en el tiempo. La base de datos se encuentra en este <a href="https://docs.google.com/spreadsheets/d/1Nr5mlVI1PAIXpaOtmRugJbwyriQYlAUt5Ldehq8VZ6E/edit?gid=0#gid=0">archivo de sheets</a> y el diccionario de datos en este <a href="https://docs.google.com/spreadsheets/d/1VJZkKd5dDWnHzbOO3G4o7yeW8jh1GZJIhykaApI05MQ/edit?gid=1761737635#gid=1761737635">otro</a></p>
+<p>Si quieres saber quién soy yo, puedes consultar mi linkedIn <a href="https://www.linkedin.com/in/hescalar/">aquí</a>.</p>
+</section>
+<section id="gráficos-de-votos-totales" class="level2">
+<h2 class="anchored" data-anchor-id="gráficos-de-votos-totales">Gráficos de votos totales</h2>
+<p>La intención de voto total toma en cuenta a los votos blancos, nulos e indecisos, estos tres representan ahora mismo entre 17 y 27 puntos porcentuales. Para referencia, en la elección de 2020 los blancos y nulos alcanzaron apenas 5% de los votos emitidos, en el proceso electoral de 2019 su proporción fue similar, mientras que en las elecciones generales de 2014 estuvieron cerca del 5.8%.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/grafico-total1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Los variaciones más grandes entre las encuestas están justamente entre los votos blancos, nulos e indecisos, lo que habla de la volatilidad de este grupo. Si damos por bueno que en la recta final existirán alrededor de 5% de votos nulos y blancos, se puede concluir que hay, en promedio (17% + 27%)/2 - 5% nulos-blancos) = 17% del electorado que emitirá un voto válido y que todavía no se ha decantado por ninguna candidatura. Un contexto de crisis e incertidumbre probablemente retrase esta decisión hasta el último momento, a menos que exista un suceso canónico que permita al elector optar por una opción política, o al menos, descartarla.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/grafico-total2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Si observamos los intervalos de confianza y damos por buena la operación estadística, hay pocas diferencias estadísticamente significativas entre los hallazgos que presentan los medios de comunicación -y las empresas-consultoras encargadas del levantamiento y análisis- a excepción de las estimaciones para los votos indecisos, nulos y los resultados de UNIDAD (Samuel Doria Medina), a quien El Deber sitúa como el ganador con cerca del 25%. Si bien UNITEL también declara ganador a Samuel, lo hace con 5% menos, y con una diferencia casi nula con el segundo lugar, ocupado por Tuto Quiroga (LIBRE).</p>
+<p>Si hablamos de las diferencias entre los primeros y segundos lugares, según las estimaciones las diferencias entre el primer y segundo lugar no son estadísticamente significativas en ningún caso. El tercer lugar lo ocupa Andrónico Rodríguez (Alianza Popular). Según UNITEL, el presidente del senado se encuentra relativamente cerca de Tuto -alrededor de 4.2 puntos y a casi 5 puntos de Samuel, pero El Deber lo posiciona a más de 7 puntos del segundo lugar y casi 10 puntos del primero.</p>
+<p>Teniendo en cuenta que probablemente las candidaturas con las campañas más organizadas y con más recursos hasta el momento (Samuel y Tuto) son las que están liderando la intención de voto, parece ser que el electorado premia a quienes están haciendo su tarea como candidatos. Tal vez la excepción a la regla es Manfred Reyes Villa, quien a pesar de estar movilizando aparato, recursos y visitando medios de comunicación constanteente, parece no poder proyectarse a nivel nacional. Posteriormente (y en función de mi tiempo disponible) intentaré desagregar el análisis al menos a nivel regional, pues las encuestas observadas presentan errores de estimación muy altos a nivel departamental, en especial de los menos poblados.</p>
+<p>Sobra decir que la inestabilidad política, la improvisación de los partidos políticos, la judicialización de la elección y la endeble respuesta del Tribunal Supremo Electoral no han permitido que las campañas despeguen. Muchos de los partidos inician oficialmente sus camapañas este fin de semana (28 de junio). Según el calendario electoral, los partidos pueden presentar sustitutos hasta 45 días antes de la elección en caso de que los candidatos renuncien, esto es, hasta el viernes 4 de julio. En otras palabras, no será hasta esa fecha que se cierren las negociaciones políticas y podremos conocer a las candidaturas “firmes”, dado que después de ese día, las únicas sustituciones de candidaturas podrán ser por causa de inhabilitación, fallecimiento o incapacidad total.</p>
+</section>
+<section id="gráficos-de-votos-válidos" class="level2">
+<h2 class="anchored" data-anchor-id="gráficos-de-votos-válidos">Gráficos de votos válidos</h2>
+<p>Finalmente, se presenta el ejercicio con el voto efectivo, aunque este debe ser tomado con precaución, dado el altísimo porcentaje de indecisos, nulos y blancos, que pueden fluctuar mucho entre hoy y el día de la elección.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/grafico-efectivo1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Las tendencias siguen el mismo camino de la votación total, el único objetivo de estas visualizaciones es observar si alguna candidatura se acerca al ansiado 50% + 1 voto que permite una victoria en primera vuelta. Pero ninguno alcanza siquiera el 30%</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/grafico-efectivo2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>En la virtual situación de que la elección fuera este fin de semana, la segunda vuelta sería contendida por Samuel Doria Medina y Tuto Quiroga Ramírez.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
