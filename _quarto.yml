@@ -1,15 +1,27 @@
 project:
   type: website
-  output-dir: docs
+
+website:
+  title: "Encuesta de encuestas"
+  navbar:
+    left:
+      - text: Inicio
+        href: index.qmd
+      - text: Voto total
+        href: "#gráficos-de-votos-totales"
+      - text: Voto válido
+        href: "#gráficos-de-votos-válidos"
+    right:
+      - icon: github
+        href: https://github.com/hescalar/encuesta_encuestas_bol25
 
 format:
   html:
+    theme: cosmo
+    toc: true
+    toc-location: left
+    fig-align: center
+    fig-width: 9
+    fig-height: 5
+    fig-responsive: true
     css: styles.css
-    toc: false
-    echo: false
-    warning: false
-    message: false
-    lang: es  # ¡Movido aquí!
-
-website:
-  title: "Encuesta de encuestas: Elecciones Generales Bolivia 2025"
