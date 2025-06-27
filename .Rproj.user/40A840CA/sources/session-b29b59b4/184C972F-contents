@@ -85,6 +85,10 @@ etiquetar_df_base <- function(df, dictionary) {
 
 df<- etiquetar_df_base(df, dictionary)
 
+sjlabelled::get_label(df_etiquetado$cons_emp)
+
+sjlabelled::get_labels(df_etiquetado$cons_emp)  
+
 str(df$fecha_pub)
 
 df <- df |>
@@ -506,5 +510,6 @@ g_efectivo <- ggplot(df_efectivo, aes(
   )
 g_efectivo
 
+table(df_efectivo$margen_error_efectivo)
 
-
+table(as_label(df_long$cons_emp),df_long$candidat)
