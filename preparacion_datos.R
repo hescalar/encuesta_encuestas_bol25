@@ -118,7 +118,7 @@ df_long <- df %>%
 #El diccionario me dice que son 20 niveles (y 20 valores)
 
 
-etiquetas_actuales <- attr(df_long$medio, "labels")
+etiquetas_actuales <- attr(df_long$cons_emp, "labels")
 
 # Asegurarse de que los valores son numéricos
 etiquetas_actuales <- setNames(as.numeric(etiquetas_actuales), names(etiquetas_actuales))
@@ -130,9 +130,9 @@ etiquetas_actuales
 nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = (length(etiquetas_actuales)+1))
 
 # Reasignar etiquetas a la variable 'medio'
-df_long$medio <- set_labels(df_long$medio, labels = nuevas_etiquetas)
+df_long$cons_emp <- set_labels(df_long$cons_emp, labels = nuevas_etiquetas)
 
-get_labels(df_long$medio)
+get_labels(df_long$cons_emp)
 
 table(df_long$mes_ano)
 
@@ -145,18 +145,18 @@ promedios<- df_long %>%
     margen_error = mean(margen_error, na.rm = TRUE),
     .groups = "drop"
   )|>
-  mutate(medio = length(nuevas_etiquetas))# La cuenta de las nuevas_etiquetas ahora corresponde a la etiqueta "Promedio"
+  mutate(cons_emp = length(nuevas_etiquetas))# La cuenta de las nuevas_etiquetas ahora corresponde a la etiqueta "Promedio"
 promedios
 # Unir los promedios al df_long original
 df_long <- bind_rows(df_long, promedios)
 df_long
 
-table(df_long$medio)
-df_long$medio
+table(df_long$cons_emp)
+df_long$cons_emp
 #Ya aparece el promedio
 
-df_long$medio <- set_labels(
-  as.numeric(df_long$medio),  # Asegura que sea numérico
+df_long$cons_emp <- set_labels(
+  as.numeric(df_long$cons_emp),  # Asegura que sea numérico
   labels = nuevas_etiquetas
 )
 
@@ -245,12 +245,12 @@ levels(df_efectivo$candidat)
 #Promedio efectivos
 
 # 4. Mantener EXACTAMENTE tu código de promedios (solo cambiando el input)
-etiquetas_actuales_ef <- attr(df_efectivo$medio, "labels")
+etiquetas_actuales_ef <- attr(df_efectivo$cons_emp, "labels")
 etiquetas_actuales
 etiquetas_actuales_ef
 etiquetas_actuales_ef <- setNames(as.numeric(etiquetas_actuales_ef), names(etiquetas_actuales_ef))
 nuevas_etiquetas_ef <- c(etiquetas_actuales, "Promedio" = length(etiquetas_actuales_ef))#no necesita sumarse
-df_efectivo$medio <- set_labels(df_efectivo$medio, labels = nuevas_etiquetas_ef)
+df_efectivo$cons_emp <- set_labels(df_efectivo$cons_emp, labels = nuevas_etiquetas_ef)
 
 # 5. Calcular promedios (mismo código, ahora con intención reescalada)
 promedios_efectivo <- df_efectivo %>%
@@ -260,17 +260,17 @@ promedios_efectivo <- df_efectivo %>%
     margen_error_efectivo = mean(margen_error_efectivo, na.rm = TRUE),
     .groups = "drop"
   ) %>%
-  mutate(medio = length(nuevas_etiquetas_ef))  # Valor etiquetado como "Promedio"
+  mutate(cons_emp = length(nuevas_etiquetas_ef))  # Valor etiquetado como "Promedio"
 promedios_efectivo
 
 # 6. Combinar conservando etiquetas (igual que tu versión)
 df_efectivo<- bind_rows(df_efectivo, promedios_efectivo) %>%
-  mutate(medio = set_labels(as.numeric(medio), labels = nuevas_etiquetas))
+  mutate(cons_emp = set_labels(as.numeric(cons_emp), labels = nuevas_etiquetas))
 
 
 # Verificación
-table(df_efectivo$medio)  # Debe incluir 22="Promedio"
-get_labels(df_efectivo$medio)
+table(df_efectivo$cons_emp)  # Debe incluir 22="Promedio"
+get_labels(df_efectivo$cons_emp)
 
 
 df_efectivo<- df_efectivo|>

@@ -46,8 +46,8 @@ g_jun<-df_long %>%
   ggplot(aes(
     x = candidat,
     y = intencion,
-    fill = as_label(medio),
-    group = as_label(medio)
+    fill = as_label(cons_emp),
+    group = as_label(cons_emp)
   )) +
   geom_col(position = position_dodge(width = 1), alpha = 1, width = .8) +
   geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci),
@@ -55,10 +55,10 @@ g_jun<-df_long %>%
                 width = .8, alpha = 0.6) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +  # si tenés paleta definida
   labs(
-    title = "Junio 2025: intención de voto total por candidato y medio de difusión",
+    title = "Junio 2025: intención de voto total por candidato y consultora o empresa encuestadora",
     x = "Candidatura",
     y = "Intención de voto (%)",
-    fill = "Medio de difusión",
+    fill = "Consultora o empresa",
     caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE,
     intervalos de confianza calculados con el margen de error que publica la encuestadora"
   ) +
@@ -73,11 +73,11 @@ g1<-ggplot(df_long, aes(
   x = mes_ano,
   y = intencion,
   color = candidat,
-  shape = as_label(medio)
+  shape = as_label(cons_emp)
 ))+
   # Primero: Líneas SOLO para los promedios (conexión entre meses)
   geom_line(
-    data = df_long %>% filter(medio == length(nuevas_etiquetas)),  # Solo promedios
+    data = df_long %>% filter(cons_emp == length(nuevas_etiquetas)),  # Solo promedios
     aes(group = candidat),
     linetype = "solid",
     linewidth = 0.8,
@@ -123,7 +123,7 @@ g1<-ggplot(df_long, aes(
     x = "Mes de publicación",
     y = "Intención de voto (%)",
     color = "Candidatura",
-    shape = "Medio de difusión",
+    shape = "Consultora o empresa",
     caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE y 'súper encuesta'
     de Marcelo Claure, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
   )  +
@@ -154,8 +154,8 @@ g_jun_efc<-df_efectivo %>%
   ggplot(aes(
     x = candidat,
     y = intencion,
-    fill = as_label(medio),
-    group = as_label(medio)
+    fill = as_label(cons_emp),
+    group = as_label(cons_emp)
   )) +
   geom_col(position = position_dodge(width = 1), alpha = 1, width = .8) +
   geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci),
@@ -163,10 +163,10 @@ g_jun_efc<-df_efectivo %>%
                 width = .8, alpha = 0.6) +
   scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +  # si tenés paleta definida
   labs(
-    title = "Junio 2025: intención de voto válido por candidato y medio de difusión",
+    title = "Marzo - Junio 2025: intención de voto válido por candidato y consultora o empresa encuestadora",
     x = "Candidatura",
     y = "Intención de voto (%)",
-    fill = "Medio de difusión",
+    fill = "Consultora o empresa",
     caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE,
     intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
   ) +
@@ -181,10 +181,10 @@ g_efectivo <- ggplot(df_efectivo, aes(
   x = mes_ano,
   y = intencion,
   color = candidat,
-  shape = as_label(medio)
+  shape = as_label(cons_emp)
 )) +
   geom_line(
-    data = df_efectivo %>% filter(medio == length(nuevas_etiquetas)),  # Solo promedios
+    data = df_efectivo %>% filter(cons_emp == length(nuevas_etiquetas)),  # Solo promedios
     aes(group = candidat),
     linetype = "solid",
     linewidth = 0.8,
@@ -230,7 +230,7 @@ g_efectivo <- ggplot(df_efectivo, aes(
     x = "Mes de publicación",
     y = "Porcentaje de votos válidos (%)",
     color = "Candidatura",
-    shape = "Medio de difusión",
+    shape = "Consultora o empresa",
     caption = "Fuente: Elaboración propia con base en encuestas autorizadas por el TSE y 'súper encuesta'
     de Marcelo Claure, intervalos de confianza escalados con base en el margen de error que publica la encuestadora"
   ) +

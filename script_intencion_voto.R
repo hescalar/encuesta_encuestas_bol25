@@ -402,10 +402,12 @@ levels(df_efectivo$candidat)
 #Promedio efectivos
 
 # 4. Mantener EXACTAMENTE tu código de promedios (solo cambiando el input)
-etiquetas_actuales <- attr(df_efectivo$medio, "labels")
-etiquetas_actuales <- setNames(as.numeric(etiquetas_actuales), names(etiquetas_actuales))
-nuevas_etiquetas <- c(etiquetas_actuales, "Promedio" = length(etiquetas_actuales+1))
-df_efectivo$medio <- set_labels(df_efectivo$medio, labels = nuevas_etiquetas)
+etiquetas_actuales_ef <- attr(df_efectivo$medio, "labels")
+etiquetas_actuales
+etiquetas_actuales_ef
+etiquetas_actuales_ef <- setNames(as.numeric(etiquetas_actuales_ef), names(etiquetas_actuales_ef))
+nuevas_etiquetas_ef <- c(etiquetas_actuales, "Promedio" = length(etiquetas_actuales_ef))#no necesita sumarse
+df_efectivo$medio <- set_labels(df_efectivo$medio, labels = nuevas_etiquetas_ef)
 
 # 5. Calcular promedios (mismo código, ahora con intención reescalada)
 promedios_efectivo <- df_efectivo %>%
@@ -415,7 +417,7 @@ promedios_efectivo <- df_efectivo %>%
     margen_error_efectivo = mean(margen_error_efectivo, na.rm = TRUE),
     .groups = "drop"
   ) %>%
-  mutate(medio = length(nuevas_etiquetas))  # Valor etiquetado como "Promedio"
+  mutate(medio = length(nuevas_etiquetas_ef))  # Valor etiquetado como "Promedio"
 promedios_efectivo
 
 # 6. Combinar conservando etiquetas (igual que tu versión)
@@ -424,7 +426,7 @@ df_efectivo<- bind_rows(df_efectivo, promedios_efectivo) %>%
 
 
 # Verificación
-table(df_efectivo$medio)  # Debe incluir 21="Promedio"
+table(df_efectivo$medio)  # Debe incluir 22="Promedio"
 get_labels(df_efectivo$medio)
 
 
@@ -493,15 +495,15 @@ g_efectivo <- ggplot(df_efectivo, aes(
     linewidth = 0.8,
     alpha = 0.6,
     position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
-      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+      position_dodge(width = 2)  # Dodge si hay grupos con >1 observación
     } else {
       position_identity()          # Posición exacta si todos tienen 1 observación
     }
   ) +
   geom_errorbar(
     aes(ymin = lower_ci, ymax = upper_ci),
-    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
-      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    position = if (any(count(df_efectivo, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 2)  # Dodge si hay grupos con >1 observación
     } else {
       position_identity()          # Posición exacta si todos tienen 1 observación
     },
@@ -509,8 +511,8 @@ g_efectivo <- ggplot(df_efectivo, aes(
     alpha = 0.5
   ) +
   geom_point(
-    position = if (any(count(df_long, mes_ano, candidat)$n > 1)) {
-      position_dodge(width = 0.5)  # Dodge si hay grupos con >1 observación
+    position = if (any(count(df_efectivo, mes_ano, candidat)$n > 1)) {
+      position_dodge(width = 2)  # Dodge si hay grupos con >1 observación
     } else {
       position_identity()          # Posición exacta si todos tienen 1 observación
     },
@@ -528,7 +530,7 @@ g_efectivo <- ggplot(df_efectivo, aes(
   ) +
   scale_color_manual(values = colores_10) +
   labs(
-    title = "Junio 2025: Intención de voto efectivo (100% = votos válidos)",
+    title = "Marzo - Junio 2025: Intención de voto efectivo (100% = votos válidos)",
     subtitle = "Excluyendo Blancos, Nulos e Indecisos",
     x = "Mes de publicación",
     y = "Porcentaje de votos válidos (%)",
@@ -555,8 +557,24 @@ g_efectivo <- ggplot(df_efectivo, aes(
     legend.position = "right",
     axis.text.x = element_text(angle = 45, hjust = 1)
   )
+
 g_efectivo
 
-table(df_efectivo$margen_error_efectivo)
 
-table(as_label(df_long$cons_emp),df_long$candidat)
+
+p <- ggplotly(g_efectivo)
+
+str(p$x$data, max.level = 2)
+for (i in seq_along(p$x$data)) {
+  cat("Trazado", i, ": name =", p$x$data[[i]]$name, 
+      "| showlegend =", p$x$data[[i]]$showlegend, "\n")
+}
+
+
+library(gridExtra)
+
+grid.arrange(
+  g_efectivo,         # Gráfico con leyenda original
+  ggplotly(g_efectivo) %>% layout(showlegend = FALSE),  # Gráfico interactivo sin leyenda
+  ncol = 2
+)

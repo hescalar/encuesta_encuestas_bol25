@@ -25,3 +25,4 @@ format:
     fig-height: 5
     fig-responsive: true
     css: styles.css
+    lang: es
