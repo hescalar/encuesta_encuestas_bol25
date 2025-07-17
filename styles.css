@@ -31,13 +31,13 @@ img, .quarto-figure img {
   margin: 2em auto;
 }
 
-/* Optimizar vista en dispositivos móviles */
+/* Ajuste para móviles */
 @media (max-width: 768px) {
   .main-container {
-    padding: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-
-  .figure-caption {
-    font-size: 0.9rem;
+  .figure, .table {
+    width: 100% !important;
   }
 }
