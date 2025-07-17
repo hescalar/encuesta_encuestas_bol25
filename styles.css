@@ -41,3 +41,25 @@ img, .quarto-figure img {
     width: 100% !important;
   }
 }
+
+/* Ajustes para la navbar superior */
+.navbar {
+  transform: scale(0.9);
+  transform-origin: top center;
+  height: auto !important; /* Altura flexible */
+}
+
+.navbar-nav {
+  flex-wrap: wrap; /* Permite múltiples líneas si es necesario */
+  gap: 0.3rem;    /* Espacio entre botones */
+}
+
+.navbar-brand {
+  font-size: 100%;  /* Tamaño del título */
+  padding: 0.2rem 0;
+}
+
+.nav-link {
+  font-size: 95%;  /* Tamaño de los textos */
+  padding: 0.3rem 0.5rem !important; /* Relleno compacto */
+}
