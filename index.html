@@ -101,6 +101,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./#gráficos-de-intención-de-votos-válidos" rel="" target="">
  <span class="menu-text">Intención de voto válido</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./#voto-oculto-y-precisión-de-las-encuestas-en-las-últimas-elecciones" rel="" target="">
+ <span class="menu-text">Voto oculto y precisión encuestadoras</span></a>
+  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -128,6 +132,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#intención-de-voto-bolivia-última-encuesta-disponible" id="toc-intención-de-voto-bolivia-última-encuesta-disponible" class="nav-link" data-scroll-target="#intención-de-voto-bolivia-última-encuesta-disponible">Intención de voto Bolivia: Última encuesta disponible</a></li>
   <li><a href="#gráficos-de-intención-de-voto-total" id="toc-gráficos-de-intención-de-voto-total" class="nav-link" data-scroll-target="#gráficos-de-intención-de-voto-total">Gráficos de intención de voto total</a></li>
   <li><a href="#gráficos-de-intención-de-votos-válidos" id="toc-gráficos-de-intención-de-votos-válidos" class="nav-link" data-scroll-target="#gráficos-de-intención-de-votos-válidos">Gráficos de intención de votos válidos</a></li>
+  <li><a href="#voto-oculto-y-precisión-de-las-encuestas-en-las-últimas-elecciones" id="toc-voto-oculto-y-precisión-de-las-encuestas-en-las-últimas-elecciones" class="nav-link" data-scroll-target="#voto-oculto-y-precisión-de-las-encuestas-en-las-últimas-elecciones">Voto oculto y precisión de las encuestas en las últimas elecciones</a>
+  <ul class="collapse">
+  <li><a href="#las-encuestas-en-la-elección-de-2019" id="toc-las-encuestas-en-la-elección-de-2019" class="nav-link" data-scroll-target="#las-encuestas-en-la-elección-de-2019">Las encuestas en la elección de 2019</a></li>
+  <li><a href="#el-regreso-del-mas-ipsp-la-elección-de-2020" id="toc-el-regreso-del-mas-ipsp-la-elección-de-2020" class="nav-link" data-scroll-target="#el-regreso-del-mas-ipsp-la-elección-de-2020">El regreso del MAS-IPSP: la elección de 2020</a></li>
+  <li><a href="#estimación-del-voto-oculto" id="toc-estimación-del-voto-oculto" class="nav-link" data-scroll-target="#estimación-del-voto-oculto">Estimación del voto oculto</a></li>
+  </ul></li>
+  <li><a href="#qué-se-puede-esperar-del-voto-oculto-para-las-elecciones-de-2025" id="toc-qué-se-puede-esperar-del-voto-oculto-para-las-elecciones-de-2025" class="nav-link" data-scroll-target="#qué-se-puede-esperar-del-voto-oculto-para-las-elecciones-de-2025">¿Qué se puede esperar del voto oculto para las elecciones de 2025?</a></li>
+  <li><a href="#agradecimientos" id="toc-agradecimientos" class="nav-link" data-scroll-target="#agradecimientos">Agradecimientos</a></li>
   </ul>
 </nav>
 </nav>
@@ -141,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Encuesta de encuestas: Elecciones Generales Bolivia 2025</h1>
-<p class="subtitle lead">Última actualización: 14 de julio de 2025</p>
+<p class="subtitle lead">Última actualización: 16 de julio de 2025</p>
 </div>
 
 <div>
@@ -175,6 +187,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="registro-de-cambios" class="level2">
 <h2 class="anchored" data-anchor-id="registro-de-cambios">Registro de cambios</h2>
+<p><strong>16/07/2025:</strong> Se añaden tres nuevas secciones: una sobre el voto oculto histórico y la precisión histórica de las encuestadoras tomando como referencia las elecciones de 2019 y 2020; otra sobre prospectiva del voto oculto en estas elecciones; y una de agradecimientos. Se añaden los datos de la última encuesta de SPIE publicada por El Deber el día de hoy, queda pendiente la reinterpretación a la luz de los últimos datos. Modificaciones estéticas menores. ¡Felicidades La Paz! :)</p>
 <p><strong>14/07/2025</strong>: Se introducen algunas ideas a la luz de los datos arrojados por la última encuesta de IPSOS CIESMORI. Se actualiza la presentación.</p>
 <p><strong>13/07/2025</strong>: Se añaden los datos de la última encuesta de IPSOS CIESMORI publicada por UNITEL el 13 de julio de 2025. Se optimiza el código para mostrar los promedios de campaña en función de la encuesta más reciente de cada consultora o empresa encuestadora (i.e.&nbsp;IPSOS CIESMORI es la única empresa que cuenta con dos encuestas durante el periodo de campaña, el cálculo de los promedio se hace con la intención de voto de su encuesta publicada hoy, es decir, el más reciente). Se añade nueva sección con los valores de intención de voto de la encuesta más reciente. Dado que NGP se ha retirado de la carrera electoral sus valores quedarán como perdidos de ahora en adelante. Se añaden rectas verticales marcando algunos hitos como el inicio de campaña, el primer debate y la inhabilitación de Jaime Dunn.</p>
 <p><strong>02/07/2025</strong>: Ante la inhabilitación de Jaime Dunn se cambia la etiqueta de candidato de NGP a Fidel Tapia Zambrana. La salida de Antonio Saravia también deja como el único candidato visible a Pavel Aracena por LyP-ADN. Modificaciones estéticas en gráficas de intención de voto para que den cuenta de la fecha del fin del levantamiento de las encuestas, se agrupó mayo y junio para gráficas de intención voto desde el inicio de campaña.</p>
@@ -198,9 +211,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="intención-de-voto-bolivia-última-encuesta-disponible" class="level2">
 <h2 class="anchored" data-anchor-id="intención-de-voto-bolivia-última-encuesta-disponible">Intención de voto Bolivia: Última encuesta disponible</h2>
-<p>Fecha de publicación: 13 de julio</p>
-<p>Consultora o empresa encuestadora: IPSOS CIESMORI</p>
-<p>Medio de publicación: UNITEL</p>
+<p>Fecha de publicación: 16 de julio</p>
+<p>Consultora o empresa encuestadora: SPIE Consulting S.R.L.</p>
+<p>Medio de publicación: El Deber</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/grafico-ultimaencuesta-1.png" class="img-fluid" width="864"></p>
@@ -266,6 +279,285 @@ Asumiendo que, en etapas finales, alrededor del 5% de los votos serán nulos o b
 </div>
 </div>
 <p>En la virtual situación de que la elección fuera este fin de semana y que los indecisos no tomen partido alguno, la segunda vuelta sería contendida por Samuel Doria Medina y Tuto Quiroga Ramírez.</p>
+</section>
+<section id="voto-oculto-y-precisión-de-las-encuestas-en-las-últimas-elecciones" class="level2">
+<h2 class="anchored" data-anchor-id="voto-oculto-y-precisión-de-las-encuestas-en-las-últimas-elecciones">Voto oculto y precisión de las encuestas en las últimas elecciones</h2>
+<p>Esta sección revisará brevemente el comportamiento del voto oculto y la calidad predictiva de las consultoras comparando las últimas encuestas disponibles previas a las elecciones de 2019 y 2020, respectivamente. No es pretensión de este texto profundizar en la discusión sobre el golpe de estado en 2019, sin embargo, resultará inevitable abordar el asunto al momento de describir las cifras. Es importante señalar que los datos oficiales que se muestran aquí no coinciden con los resultados oficiales reportados por el Tribunal Supremo Electoral en ambas elecciones, esto se debe a que el TSE informa sobre los votos válidos, es decir, excluye los votos nulos y blancos para el cálculo de los porcentajes. Para fines de comparabilidad con los datos de las encuestadoras, se recalcularon las proporciones para que la votación de las candidaturas, blancos y nulos sumen el 100%.</p>
+<section id="las-encuestas-en-la-elección-de-2019" class="level3">
+<h3 class="anchored" data-anchor-id="las-encuestas-en-la-elección-de-2019">Las encuestas en la elección de 2019</h3>
+<p>Si bien fueron cuestionados, el análisis se basa en los resultados electorales oficiales publicados por el Tribunal Supremo Electoral. Al respecto, las encuestas de IPSOS y VIA CIENCIA fueron las más cercanas al resultado oficial reportado por el TSE; para el segundo lugar (Carlos D. Mesa) VIA CIENCIA y la UMSA son las que mostraron las estimaciones más próximas, aunque alejadas. Si observamos los intervalos de confianza, ni una sola de las encuestadoras estuvo próxima a los resultados oficiales de los dos primeros lugares en términos estadísticos.</p>
+<p>Si hablamos de los niveles de votos nulos y blancos, IPSOS fue la consultora que mejor estimó estas votaciones, y sus indecisos tendrían que haberse repartido de la siguiente manera, ~9% hacia Comunidad Ciudadana y ~4% hacia el MAS-IPSP, solo así se acercaría al resultado oficial. VIA CIENCIA también muestra una estimación aceptable de nulos y blancos, pero sus niveles de indecisión no cierran cuando se intenta repartirlos entre el primer y segundo lugar. Igualmente, todas las encuestadoras sin excepción sobre-estimaron el cuarto lugar (Oscar Ortíz) y subestimaron al <em>outsider</em> de esta elección, Chi Hyng Chung (PDC), que quedó tercero.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/grafico-2019-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>Es cuando menos improbable que todas las encuestas estén mal, el muestreo y la estimación estadística son disciplinas cuyo objetivo es dar grados de certeza administrando la incertidumbre de una manera científica -esto se hace calculando los márgenes de error del estudio y su nivel de confianza. No son una ciencia exacta, pero sí manejan parámetros de confiabilidad que, cuando se hacen bien, reflejan el comportamiento de la población que buscan representar, en este caso, la votación. A la luz de esto, “entusiastas” de la tesis del fraude podrían decir que la distorsión vino de la manipulación de la votación a favor del oficialismo. No obstante, de haber sucedido, no tiene sentido que todas las encuestadoras también hayan subestimado por tanto la votación de Carlos D. Mesa (Comunidad Ciudadana), principal opositor de Evo Morales en esas elecciones.</p>
+<p>Lo dicho nos reduce a los siguientes escenarios:</p>
+<ol type="1">
+<li><p>Todas las encuestadoras hicieron un mal diseño muestral (etapa de diseño del estudio), pésimos instrumentos (preguntas mal planteadas o que inducían a ciertas respuestas), un trabajo de campo deficiente (etapa de levantamiento de la información, es decir, personal encuestador poco hábil, que falsea respuestas o una pobre validación) o todas las anteriores. En este caso, los problemas vienen de la capacidad técnica de las empresas. Aquí puede incluirse también la tradicional falencia de las encuestadoras para representar de forma precisa la votación en las áreas rurales, en especial las dispersas, a lo largo del país.</p></li>
+<li><p>La población mostró cambios radicales en su intención de voto durante la semana y media previa a la elección.</p></li>
+</ol>
+<p>Debido a la inexistencia de un evento de importancia (i.e.&nbsp;la revelación del supuesto hijo de Evo con Gabriela Zapata un par de semanas antes del referéndum para la tercera postulación de Morales) que explique el cambio de corazón de las y los electores; y dado que los números tampoco muestran evidencia que permita hablar de una operación armada para tumbar al MAS-IPSP desde lo que reportan las encuestas, todo parece indicar que el escenario más probable es el primero.</p>
+<p>Sin embargo centrémonos en la estimación de la diferencia entre el primer y el segundo lugar, recordemos también que aquí no estamos observando la votación válida sino la total, es decir, que cuando se excluyan los votos nulos y blancos, todos los porcentajes crecen, en especial el primer y el segundo lugar:</p>
+<table class="table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 17%">
+<col style="width: 27%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Consultora</strong></th>
+<th><strong>MAS-IPSP</strong></th>
+<th><strong>Comunidad Ciudadana</strong></th>
+<th><strong>Diferencia</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Resultados Oficiales TSE</strong></td>
+<td><strong>44.7%</strong></td>
+<td><strong>34.7%</strong></td>
+<td><strong>+10.0%</strong></td>
+</tr>
+<tr class="even">
+<td>IPSOS</td>
+<td>40.0%</td>
+<td>22.0%</td>
+<td><strong>+18.0%</strong></td>
+</tr>
+<tr class="odd">
+<td>VIA CIENCIA</td>
+<td>38.8%</td>
+<td>28.4%</td>
+<td><strong>+10.4%</strong></td>
+</tr>
+<tr class="even">
+<td>CIESMORI</td>
+<td>36.2%</td>
+<td>26.9%</td>
+<td><strong>+9.3%</strong></td>
+</tr>
+<tr class="odd">
+<td>UMSA</td>
+<td>32.3%</td>
+<td>27.0%</td>
+<td><strong>+5.3%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Esto es importante porque un detonante de la crisis política fue la diferencia muy ajustada que permitía la victoria en primera vuelta. Recordemos que la Constitución y la Ley de Régimen Electoral bolivianas indican que la persona que preside el país es elegida en primera vuelta cuando:</p>
+<ol type="a">
+<li><p>Obtiene el <span class="math inline">\(50\% + 1\)</span> voto de la votación válida.</p></li>
+<li><p>Obtiene más del <span class="math inline">\(40\%\)</span> de votación válida con una diferencia de <span class="math inline">\(10\%\)</span> con el segundo lugar.</p></li>
+</ol>
+<p>Entonces, si tomamos en cuenta el ajuste en los porcentajes por la votación válida, los márgenes de error y los votos indecisos que se estimaron de forma consistente, al menos 3 de 4 consultoras predijeron la victoria del MAS-IPSP con más de 40% de votación y 10% de diferencia con la segunda fuerza política, Comunidad Ciudadana. Por tanto, la tesis del fraude no se sostiene desde el análisis de las encuestas electorales, mientras que el golpe de estado cobra más sentido, mencionaremos un poco más al respecto en la siguiente sección.</p>
+<p>Finalmente, si se hiciera una evaluación de qué consultoras fueron las menos imprecisas, IPSOS y VIA CIENCIA estiman los valores más parecidos al resultado oficial del primer lugar, y los blancos/nulos. Además, captan adecuadamente la diferencia entre el primero y el segundo. CIESMORI también representa bien esta diferencia, aunque subestima el primer y segundo lugar por casi 10 puntos.</p>
+</section>
+<section id="el-regreso-del-mas-ipsp-la-elección-de-2020" class="level3">
+<h3 class="anchored" data-anchor-id="el-regreso-del-mas-ipsp-la-elección-de-2020">El regreso del MAS-IPSP: la elección de 2020</h3>
+<p>Resulta inevitable dar una descripción coyuntural sintética para hablar de la elección de 2020, trataré aquí de presentar algunas ideas y caracterizaciones en las que existen consensos amplios y, en lo posible, despojadas de juicios de valor.</p>
+<p>La movilización de un sector de la población urbana volcada en las calles y la operación política de la dirigencia opositora en octubre y noviembre de 2019 resultaron en la interrupción del mandato constitucional de Evo Morales. El gobierno de Jeanine Añez se gestó de una manera, por decir lo menos, irregular. Pasó de segunda vicepresidenta a presidenta del senado en una sesión convocada por ella misma, sin el quórum suficiente, en la que no se respetó el reglameno de la cámara alta -pues, ante la renuncia de Adriana Salvatierra la presidencia debió recaer en el bloque de mayoría, es decir, el MAS-IPSP, no en su persona. Posteriormente, convocó a una sesión bi-camaral donde anunció que, por sucesión constitucional, asumía como presidenta del país. Trasladándose a Palacio Quemado - ubicado al frente del edificio de la Asamblea Legislativa- unos minutos después, juró como jefa de estado en medio de militares y dirigentes opositores. En este punto, sin importar si existió un fraude electoral o no -pues una irregularidad no es justificación para cometer otra, la forma en que Añez toma la presidencia confirma lo que se ha denominado como “golpe blando”.</p>
+<p>Lo señalado y el accionar de su gobierno devinieron en que su gestión esté marcada por:</p>
+<ol type="1">
+<li><p>La ilegitimidad y la tensión casi constante con el movimiento popular. Pues más allá de si la crisis política devino en un golpe o fue consecuencia de un fraude, Jeanine Añez era una figura desconocida, carente de una base social, legal y política que la respalde más allá de su partido -minoritario en la Asamblea Legislativa.</p></li>
+<li><p>Las masacres de Senkata y Sacaba, que inflamaron al movimiento popular, indígena y campesino, y lo arrojaron de regreso al liderazgo de la entonces oposición masista.</p></li>
+<li><p>La disrupción ocasionada por la pandemia, los constantes escándalos de corrupción y una respuesta gubernamental cuando menos ineficiente -sino negligente, y que además fue usada como excusa para alargar el mandato de un gobierno cuya única tarea era convocar a una nueva elección.</p></li>
+<li><p>El estilo autoritario del entonces Ministro de Gobierno, Arturo Murillo, quien en vez de tender puentes de diálogo con los movimientos sociales, los reprimía, deshumanizaba y criminalizaba.</p></li>
+</ol>
+<p>En este contexto es que se llega a las elecciones de octubre de 2020, en las que el MAS-IPSP participa en las urnas sin su candidato histórico -pues Evo Morales dio un paso al costado y además se encontraba fuera del país en calidad de refugiado. De esta manera, quién tomó la posta fue su ex Ministro de Economía, Luis Arce Catacora, el único miembro del gabinete que no había sido reemplazado durante los 14 años de gestión -solo estuvo fuera del cargo brevemente para atender una enfermedad en 2017, y que era percibido interna y externamente como el artífice del milagro económico boliviano. Arce también apelaba a un voto de la clase media y era un candidato más fácil de digerir para los sectores urbanos que se habían movilizado en las calles durante el golpe de 2019.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/grafico-2020-1.png" class="img-fluid" width="864"></p>
+</div>
+</div>
+<p>Volvamos a los datos, todos vimos como los resultados de la elección sacudieron al mundo, pues todas las predicciones erraron de forma monumental. Si bien 3 de 4 encuestadoras dieron la victoria a la candidatura que efectivamente ganó la elección, lo hicieron con una votación muchísimo menor. Es necesario matizar que durante esa elección también se veían niveles de indecisión elevados, en el orden del 15% en promedio, pero con grandes variaciones según la encuestadora -i.e.&nbsp;para CIESMORI los indecisos nulos y blancos estaban cerca del 28%, mientras que para la UMSA e IPSOS se encontraban en el orden del 21%.</p>
+<p>De esta manera, ninguna encuestadora previó una victoria en primera vuelta para el MAS-IPSP -más aún, para Mercados y Muestras la victoria era de Comunidad Ciudadana. De cualquier manera, el escrutinio nacional e internacional casi policial con el que se llevó a cabo el proceso electoral no permitió que se repita la narrativa del fraude que había funcionado en 2019. La diferencia entre Arce y Mesa era demasiado amplia para ponerse en duda. El MAS-IPSP ganó por mucho, pero niguna de las encuestadoras lo vio venir.</p>
+<p>IPSOS mostró la estimación puntual más cercana para el primer lugar, aunque quedó cerca de 19% por debajo del resultado oficial, su estimación tampoco muestra diferencias estadísticamente significativas con la UMSA ni CIESMORI. En lo que refiere al segundo lugar, casi todas las encuestadoras estimaron un intervalo de confianza que daba cuenta del resultado final, la excepción fue CIESMORI. Para el tercer lugar sucedió lo mismo que para el segundo.</p>
+<p>Ninguna encuestadora estimó votaciones por encima del 40% y menos una diferencia de 10% entre el primero y el segundo, es decir, las encuestas perfilaban una segunda vuelta. En este punto es necesario analizar el comportamiento de los indecisos: IPSOS fue la única encuestadora que estimó bien la votación de nulos, es decir que, entre blancos e indecisos estamos hablando de cerca de 17.2% -esto ajustando por las diferencias entre la estimación puntual de blancos y nulos con los resultados oficiales, y sumándolas a su porcentaje estimado de indecisos. Si comparamos los resultados reales, prácticamente la totalidad de los indecisos reales (indecisos estimados más blancos sobre-estimados más nulos subestimados) tuvo que haber votado por el MAS-IPSP, es decir, que el voto indeciso fue en realidad voto oculto masista.</p>
+<p>Hablemos ahora del estudio realizado por la UMSA, que es el que sigue en términos de precisión de sus estimaciones puntuales, emulando el ejercicio anterior su total de indecisos reales fueron alrededor de 16.6%. Para alcanzar el resultado real también es necesario que el total de esos indecisos se sume a la votación del MAS para alcanzar poco más del 50% de votación que obtuvo en los resultados oficiales.</p>
+<p>No analizaré los resultados de CIESMORI porque sus estimaciones para el segundo lugar, tercer lugar, blancos y nulos no fueron estadísticamente precisas, pero al menos no erró en las grandes tendencias. No puede decirse lo mismo de la encuesta de Mercados y Muestras, que estimaba un empate técnico con victoria para el segundo lugar. Este es el único estudio completamente inconsistente con todos los demás, además de que sus reportes no diferencian entre blancos e indecisos. En suma, los hallazgos de esta última encuestadora parecen responder a intereses completamente ajenos a un ejercicio estadístico serio.</p>
+</section>
+<section id="estimación-del-voto-oculto" class="level3">
+<h3 class="anchored" data-anchor-id="estimación-del-voto-oculto">Estimación del voto oculto</h3>
+<p>Para fines analíticos me planteo estimar el voto oculto de la siguiente manera:</p>
+<p><span class="math display">\[\text{Voto oculto} = \text{Indecisos/No Declarados} + |\text{Blancos}_{\text{estimado}} - \text{Blancos}_{\text{oficial}}| + |\text{Nulos}_{\text{estimado}} - \text{Nulos}_{\text{oficial}}|\]</span></p>
+<p><strong>Ventajas</strong>:</p>
+<ol type="1">
+<li><strong>Simple</strong>: Usa datos disponibles en todas las encuestas.</li>
+<li><strong>Comparable</strong>: Permite jerarquizar a las consultoras por potencial subestimación o sobre-estimación.</li>
+</ol>
+<p><strong>Falencias</strong>:</p>
+<ol type="1">
+<li><strong>Indecisos ≠ ocultos</strong>: Algunos indecisos terminan votando en blanco o nulos.</li>
+<li><strong>Asimetría</strong>: No distingue si el error fue sobrestimación o subestimación.</li>
+<li><strong>Incertidumbre en su asignación</strong>: No es posible saber con seguridad a qué partido terminaron beneficiando.</li>
+</ol>
+<p><strong>Idoneidad</strong>:</p>
+<ul>
+<li><strong>Caso boliviano</strong>: Las encuestas sistemáticamente sobrestiman blancos/nulos, sugiriendo ocultamiento real.</li>
+<li><strong>Fines prácticos</strong>: Aunque imperfecta, es un indicador útil para ajustar interpretaciones.</li>
+</ul>
+<p><strong>Supuestos</strong></p>
+<ul>
+<li>Las personas encuestadas <strong>no mienten</strong> sobre su intención de voto.</li>
+<li>Los votos no declarados terminan siendo <strong>mayoritariamente votos válidos</strong>, no nulos ni blancos.</li>
+</ul>
+<section id="voto-oculto-en-las-elecciones-2019-y-2020" class="level4">
+<h4 class="anchored" data-anchor-id="voto-oculto-en-las-elecciones-2019-y-2020">Voto oculto en las elecciones 2019 y 2020</h4>
+<p>En el caso de Bolivia es necesario explicar una condición específica que se dio en 2019. Todo indica que el voto oculto se reparte mayoritariamente entre las dos primeras fuerzas. Si bien es temerario asumir esto, en esa elección las tercera fuerza fuerza política fue subestimada por las encuestas casi en la misma proporción en que la cuarta fue sobre-estimada, y las demás presentan niveles de votación mínimos, por lo que la circulación del de voto oculto tuvo que darse en las candidaturas que muestran mayores variaciones con el resultado oficial, es decir, el MAS-IPSP y Comunidad Ciudadana.</p>
+<p>En 2020, el voto de todas las candidaturas, a excepción de la ganadora, fue en general bien estimado, por lo que no hay consideraciones adicionales puesto que el voto oculto irá mayoritariamente a la fuerza política con mayor variación entre sus estimaciones y el resultado oficial, es decir, al MAS-IPSP.</p>
+<p>Dicho esto, tenemos dos escenarios</p>
+<p><strong><em>Escenario 1. Elecciones 2019</em></strong></p>
+<p><em>Características de coyuntura:</em> Niveles de indecisión moderados (en torno a los 10 y 15 puntos porcentuales). Entorno económico sólido. Clima social atemperado pero presto a ebullir. Previa derrota electoral del MAS (21-F). Gobierno previo legítimo, aunque debilitado. Operación política y comunicativa para crear desconfianza en la elección.</p>
+<p><em>Estimación del voto oculto:</em></p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 21%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Consultora</strong></th>
+<th style="text-align: center;"><strong>Indecisos / No Declarados</strong></th>
+<th style="text-align: center;"><strong>Δ Blancos</strong></th>
+<th style="text-align: center;"><strong>Δ Nulos</strong></th>
+<th style="text-align: center;"><strong>Voto oculto</strong></th>
+<th style="text-align: center;"><p><strong>MAS-IPSP</strong></p>
+<p><strong>(Oficial: 44.7%)</strong></p></th>
+<th style="text-align: center;"><p><strong>CC</strong></p>
+<p><strong>(Oficial: 34.7%)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">IPSOS</td>
+<td style="text-align: center;">13%</td>
+<td style="text-align: center;">%0.4</td>
+<td style="text-align: center;">0.5%</td>
+<td style="text-align: center;"><strong>13.9%</strong></td>
+<td style="text-align: center;">40.0% (-4.7 pp)</td>
+<td style="text-align: center;">22.0% (-12.7 pp)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">VIA CIENCIA</td>
+<td style="text-align: center;">6.6%</td>
+<td style="text-align: center;">%0.1</td>
+<td style="text-align: center;">0.9%</td>
+<td style="text-align: center;"><strong>7.6%</strong></td>
+<td style="text-align: center;">38.8% (-5.9 pp)</td>
+<td style="text-align: center;">28.4% (-6.3 pp)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CIESMORI</td>
+<td style="text-align: center;">11.3%</td>
+<td style="text-align: center;">%4.8</td>
+<td style="text-align: center;">1.8%</td>
+<td style="text-align: center;"><strong>17.9%</strong></td>
+<td style="text-align: center;">36.2% (-8.5 pp)</td>
+<td style="text-align: center;">26.9% (-7.8 pp)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Promedio</strong></td>
+<td style="text-align: center;"><strong>10.3%</strong></td>
+<td style="text-align: center;"><strong>1.8%</strong></td>
+<td style="text-align: center;"><strong>1.1%</strong></td>
+<td style="text-align: center;"><strong>13.1%</strong></td>
+<td style="text-align: center;"><strong>38.3% (-6.4 pp)</strong></td>
+<td style="text-align: center;"><strong>25.8% (-8.9 pp)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Comportamiento del voto oculto:</em> Expresados en indecisos y sobrestimación/subestimación de blancos y nulos, muestran un comportamiento más o menos equilibrado entre las dos primeras fuerzas, favoreciendo un poco más a la segunda (Comunidad Ciudadana) que a la primera (MAS-IPSP). Los datos indican que el voto oculto fue subestimado por alrededor de 2 puntos porcentuales, es decir, que más allá de los errores, 2.4% de los votos fueron asignados a fuerzas que no eran y en realidad beneficaban al primer y segundo lugar. Además, en promedio, 58% del voto oculto tuvo que ir a Carlos D. Mesa y 42% a Evo Morales.</p>
+<p><strong><em>Escenario 2. Elecciones 2020</em></strong></p>
+<p><em>Características de coyuntura:</em> Niveles de indecisión altos (entorno al 20%). Entorno económico pauperizado (por la pandemia del COVID-19). Clima social tenso. Previa derrota electoral-institucional del MAS (desconocimiento de la elección previa y golpe blando). Gobierno previo ilegítimo (Añez). Alto grado de confianza en la elección.</p>
+<p><em>Estimación del voto oculto:</em></p>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 21%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Consultora</strong></th>
+<th style="text-align: center;"><strong>Indecisos / No Declarados</strong></th>
+<th style="text-align: center;"><strong>Δ Blancos</strong></th>
+<th style="text-align: center;"><strong>Δ Nulos</strong></th>
+<th style="text-align: center;"><strong>Voto oculto</strong></th>
+<th style="text-align: center;"><p><strong>MAS-IPSP</strong></p>
+<p><strong>(Oficial: 52.3%)</strong></p></th>
+<th style="text-align: center;"><p><strong>CC</strong></p>
+<p><strong>(Oficial: 27.4%)</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">UMSA</td>
+<td style="text-align: center;">9.9%</td>
+<td style="text-align: center;">4%</td>
+<td style="text-align: center;">2.7%</td>
+<td style="text-align: center;"><strong>16.6%</strong></td>
+<td style="text-align: center;">33.6% (-18.7 pp)</td>
+<td style="text-align: center;">26.8% (-0.6 pp)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">IPSOS</td>
+<td style="text-align: center;">10%</td>
+<td style="text-align: center;">5.8%</td>
+<td style="text-align: center;">1.4%</td>
+<td style="text-align: center;"><strong>17.2%</strong></td>
+<td style="text-align: center;">34.0% (-18.3 pp)</td>
+<td style="text-align: center;">27.9% (+0.5 pp)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">CIESMORI</td>
+<td style="text-align: center;">21.8%</td>
+<td style="text-align: center;">3.4%</td>
+<td style="text-align: center;">2.3%</td>
+<td style="text-align: center;"><strong>27.5%</strong></td>
+<td style="text-align: center;">32.4% (-19.9 pp)</td>
+<td style="text-align: center;">24.5% (-2.9 pp)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Promedio</strong></td>
+<td style="text-align: center;"><strong>13.9%</strong></td>
+<td style="text-align: center;"><strong>4.4%</strong></td>
+<td style="text-align: center;"><strong>2.1%</strong></td>
+<td style="text-align: center;"><strong>20.4%</strong></td>
+<td style="text-align: center;"><strong>33.3% (-19.0 pp)</strong></td>
+<td style="text-align: center;"><strong>26.4% (-1.0 pp)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Comportamiento del voto oculto:</em> Expresados en indecisos y sobrestimación/subestimación de blancos y nulos. Hay una sobre-estimación mínima del voto oculto (0.4%), el 99.5% del voto oculto terminó en el MAS-IPSP.</p>
+</section>
+</section>
+</section>
+<section id="qué-se-puede-esperar-del-voto-oculto-para-las-elecciones-de-2025" class="level2">
+<h2 class="anchored" data-anchor-id="qué-se-puede-esperar-del-voto-oculto-para-las-elecciones-de-2025">¿Qué se puede esperar del voto oculto para las elecciones de 2025?</h2>
+<p>Hasta el momento las características de la coyuntura actual se corresponden mejor con la elección de 2020. Los niveles de indecisión están sobre el 21%, la crisis económica es la peor en décadas y el clima social pende de un hilo. Es justamente la perspectiva la elección lo que, de alguna manera, contiene un estallido social generalizado; más que gozar de confianza, para la mayoría de las y los bolivianos, la elección es percibida como un medio para salir de la crisis -si esta expectativa es justificada o no es cuestión de otra discusión. El gobierno de Arce se encuentra en mínimos históricos de aprobación, y continuas denuncias por corrupción, por lo que su legitimidad es muy débil.</p>
+<p>Sin embargo, sería un grave error pensar que los escenarios de 2020 y el que enfrentamos hoy son intercambiables de forma mecánica. Si bien hay similitudes, existen muchos matices que hacen a esta elección todavía más incierta. La principal que yo percibo se relaciona con la legitimidad de las candidaturas. Las encuestas muestran que los votos no válidos (indecisos, blancos y nulos) van en aumento. En 2020 la población fue a las urnas para sacar al gobierno de Añez, y abrazó al MAS-IPSP -poniendo a un lado los desacuerdos que podía tener con dicho partido- como un símbolo de estabilidad y eficiencia gubernamental que representaba una cotidianidad mejor. Hoy, la crisis económica sume al pueblo boliviano en un <em>deja vú</em> de lo que le pasó en el 85 durante el gobierno de la UDP.</p>
+<p>Sumado a esto, la judicialización de la elección y la ausencia de Evo Morales en la papeleta electoral solo deslegitima más el todo el proceso, no hablo aquí de la elección como un mecanismo para nombrar representantes, sino de la democracia misma. Y ese desencanto no solo es observable en los partidarios del evismo, sino en todo el electorado al que todas las candidaturas están siendo incapaces de llegar y convencer.</p>
+<p>Si bien a estas alturas es claro que un sector importante del electorado muestra animadversión, no le interesa si Evo es candidato o no lo es, o, simplemente, prefiere que la elección se realice lo antes posible; no es menos cierto que sigue siendo el actor político más importante del país. Basta revisar los medios de comunicación, las declaraciones de la clase política, las entrevistas de los candidatos. Todos sin excepción hablan de Evo, del evismo, de lo que hace o deja de hacer, lo que dice o deja de decir. Guste o no guste, quien sigue marcando la pauta en la política boliviana se encuentra en atrincherado en algún lugar del trópico cochabambino, impedido de participar en la elección.</p>
+<p>En mi opinión, esto no significa que la participación de Evo en la elección hubiera significado automáticamente la victoria del masismo. Sin embargo, si la oposición u otras vertientes del MAS-IPSP querían dejar atrás al histórico caudillo, era necesario hacerlo en el campo político, no en el judicial.</p>
+<p>Volvamos al tema principal, el comportamiento del voto oculto. Dada la coyuntura actual, si Andrónico Rodríguez logra convencer al electorado de que representa el regreso a la estabilidad de los primeros 14 años del MAS-IPSP, lo más probable es que el voto oculto latente pueda volcarse en buena medida hacia él, pensemos en alrededor de un ~16%. Los últimos datos (16/07/2020) confirman que no lo está logrando, su intención de voto va hacia la baja, su tardío inicio de campaña y propuestas que no resuenan ni emocionan en la gente están sepultando sus oportunidades en esta elección. Pero el desempeño de Andrónico también se explica por un factor adicional, la reticencia de Evo a brindarle su apoyo, o al menos no atacarlo, ni llamar a sus partidarios a votar nulo. Si esta actitud se mantiene, el potencial crecimiento de Andrónico Rodríguez se limita de forma importante, yo creo -y por esta vez, sin otra herramienta que mi intución- que este puede reducirse a la mitad, es decir, que en el contexto actual el voto oculto de Andrónico apenas alcanzaría un ~8%.</p>
+<p>No me animo a tratar de entender las razones por las que Evo no está dispuesto a conciliar. Lo que sí puedo decir es que si el pragmatismo político que llame a una unidad del masismo escindido, y otras corrientes progresistas o populares, no prima por encima de las rencillas y diferencias que han fracturado al MAS-IPSP, es altamente probable que la segunda vuelta la disputen dos partidos de derecha.</p>
+</section>
+<section id="agradecimientos" class="level2">
+<h2 class="anchored" data-anchor-id="agradecimientos">Agradecimientos</h2>
+<p>Agradezco las revisiones y sugerencias de Shirley Aguilar Miranda, Elvia Chavarría Martínez, Carlos Ernesto Peñaranda Sánchez y Víctor Hugo Calisaya Hinojosa.</p>
 
 
 </section>
